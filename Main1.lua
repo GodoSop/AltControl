@@ -127,7 +127,7 @@ function ownership(message)
 		owner = searchName(removeCommand(message.Text, "!owner")).Name
 	end
 end
-
+print("If you see this the script works")
 TextChatService.OnIncomingMessage = function(message)
 	follow(message)
 	speak(message)
