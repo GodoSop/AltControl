@@ -34,7 +34,7 @@ function loopTp(message)
 		end
 	end
 end
-
+print("If you see this the script works 2")
 TextChatService.OnIncomingMessage = function(message)
 	loopTp(message)
 end
