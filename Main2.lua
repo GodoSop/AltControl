@@ -34,7 +34,15 @@ function loopTp(message)
 		end
 	end
 end
+
+--Trasnfer ownership
+function ownership(message)
+	if message.TextSource.UserId == Players[owner].UserId and string.sub(message.Text, 1, 6) == "!owner" and searchName(removeCommand(message.Text, "!owner")) then
+		owner = searchName(removeCommand(message.Text, "!owner")).Name
+	end
+end
 print("If you see this the script works 2")
 TextChatService.OnIncomingMessage = function(message)
 	loopTp(message)
+	ownership(message)
 end
