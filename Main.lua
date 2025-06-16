@@ -33,6 +33,7 @@ function follow(message)
 		followToggle = true
 		if followToggle then
 			LocalPlayer.Character:MoveTo(searchName(removeCommand(message.Text, "!walkto")).Character.HumanoidRootPart.Position)
+			LocalPlayer.Character.Humanoid.WalkSpeed = 16
 		end
 		while followToggle and wait() do
 			LocalPlayer.Character.Humanoid:MoveTo(searchName(removeCommand(message.Text, "!walkto")).Character.HumanoidRootPart.Position)
