@@ -160,6 +160,6 @@ TextChatService.OnIncomingMessage = function(message)
 	teleport(message)
 	autochat(message)
 	ownership(message)
-  loopTp(message)
-  comeback(message)
+  	loopTp(message)
+  	comeback(message)
 end
