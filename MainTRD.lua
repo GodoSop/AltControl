@@ -153,7 +153,7 @@ game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("Buy"):
 end
 
 function winobby(message)
-	if message.TextSource.UserId == Players[owner].UserId and string.sub(message.Text, 1, 6) == "!owner" then
+	if message.TextSource.UserId == Players[owner].UserId and string.sub(message.Text, 1, 8) == "!winobby" then
 	      local WinPart = workspace.Assets:GetChildren()
       local Player = workspace:WaitForChild(tostring(game.Players.LocalPlayer)):WaitForChild("HumanoidRootPart")
       local finishPart = nil
