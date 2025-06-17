@@ -171,6 +171,15 @@ function winobby(message)
 	end
 end
 
+function vote(message)
+	if message.TextSource.UserId == Players[owner].UserId and string.sub(message.Text, 1, 5) == "!vote" and searchName(removeCommand(message.Text, "!vote")) then
+		local args = {
+	searchName(removeCommand(message.Text, "!vote")).Name
+}
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("Vote"):FireServer(unpack(args))
+	end
+end
+
 print("If you see this the script works")
 TextChatService.OnIncomingMessage = function(message)
 	follow(message)
@@ -182,4 +191,5 @@ TextChatService.OnIncomingMessage = function(message)
   	loopTp(message)
   	comeback(message)
 	winobby(message)
+	vote(message)
 end
