@@ -152,6 +152,25 @@ game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("Buy"):
 	end
 end
 
+function winobby(message)
+	if message.TextSource.UserId == Players[owner].UserId and string.sub(message.Text, 1, 6) == "!owner" then
+	      local WinPart = workspace.Assets:GetChildren()
+      local Player = workspace:WaitForChild(tostring(game.Players.LocalPlayer)):WaitForChild("HumanoidRootPart")
+      local finishPart = nil
+      local assetsFolder = game.Workspace.Assets
+
+      for _, item in pairs(assetsFolder:GetDescendants()) do
+         if item:IsA("Part") and item.Name == "Finish" then
+            finishPart = item
+            break
+         end
+      end
+
+      repeat wait() until game.Players.LocalPlayer.PlayerGui.Game.Background.MainText.Text == "GO!"
+      Player.CFrame = CFrame.new(finishPart.Position)	
+	end
+end
+
 print("If you see this the script works")
 TextChatService.OnIncomingMessage = function(message)
 	follow(message)
@@ -162,4 +181,5 @@ TextChatService.OnIncomingMessage = function(message)
 	ownership(message)
   	loopTp(message)
   	comeback(message)
+	winobby(message)
 end
