@@ -2,6 +2,7 @@ local TextChatService = game:GetService("TextChatService")
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 local owner = "sxjihbm"
+local owner2 = "KediPastasi2011"
 local followToggle = false
 local autochatToggle = false
 local looptpToggle = false
@@ -27,9 +28,9 @@ end
 
 -- Follow person
 function follow(message)
-	if message.Text == "!followt" and message.TextSource.UserId == Players[owner].UserId then
+	if message.Text == "!followt" and (message.TextSource.UserId == Players[owner].UserId or message.TextSource.UserId == Players[owner2].UserId) then
 		followToggle = false
-	elseif message.TextSource.UserId == Players[owner].UserId and string.sub(message.Text, 1, 7) == "!walkto" and searchName(removeCommand(message.Text, "!walkto")) then
+	elseif (message.TextSource.UserId == Players[owner].UserId or message.TextSource.UserId == Players[owner2].UserId) and string.sub(message.Text, 1, 7) == "!walkto" and searchName(removeCommand(message.Text, "!walkto")) then
 		followToggle = true
 		if followToggle then
 			LocalPlayer.Character:MoveTo(searchName(removeCommand(message.Text, "!walkto")).Character.HumanoidRootPart.Position)
@@ -51,21 +52,21 @@ function Chat(msg)
 end
 
 function speak(message)
-	if message.TextSource.UserId == Players[owner].UserId and string.sub(message.Text, 1, 6) == "!speak" then
+	if (message.TextSource.UserId == Players[owner].UserId or message.TextSource.UserId == Players[owner2].UserId) and string.sub(message.Text, 1, 6) == "!speak" then
 		Chat(removeCommand(message.Text, "!speak"))
 	end
 end
 
 --Teleport
 function teleport(message)
-	if message.TextSource.UserId == Players[owner].UserId and string.sub(message.Text, 1, 3) == "!tp" and searchName(removeCommand(message.Text, "!tp")) then
+	if (message.TextSource.UserId == Players[owner].UserId or message.TextSource.UserId == Players[owner2].UserId) and string.sub(message.Text, 1, 3) == "!tp" and searchName(removeCommand(message.Text, "!tp")) then
 		LocalPlayer.Character:MoveTo(searchName(removeCommand(message.Text, "!tp")).Character.HumanoidRootPart.Position)
 	end
 end
 
 -- Respawn
 function respawn(message)
-	if message.TextSource.UserId == Players[owner].UserId and string.sub(message.Text, 1, 8) == "!respawn" then
+	if (message.TextSource.UserId == Players[owner].UserId or message.TextSource.UserId == Players[owner2].UserId) and string.sub(message.Text, 1, 8) == "!respawn" then
 		LocalPlayer.Character.Humanoid.Health = 0
 	end
 end
@@ -109,9 +110,9 @@ function randText()
 end
 
 function autochat(message)
-	if message.Text == "!autot" and message.TextSource.UserId == Players[owner].UserId then
+	if message.Text == "!autot" and (message.TextSource.UserId == Players[owner].UserId or message.TextSource.UserId == Players[owner2].UserId) then
 		autochatToggle = false
-	elseif message.TextSource.UserId == Players[owner].UserId and string.sub(message.Text, 1, 9) == "!autochat" then
+	elseif (message.TextSource.UserId == Players[owner].UserId or message.TextSource.UserId == Players[owner2].UserId) and string.sub(message.Text, 1, 9) == "!autochat" then
 		autochatToggle = true
 		if autochatToggle then
 			Chat(randText() .. " " .. removeCommand(message.Text, "!autochat"))
@@ -124,16 +125,16 @@ end
 
 --Trasnfer ownership
 function ownership(message)
-	if message.TextSource.UserId == Players[owner].UserId and string.sub(message.Text, 1, 6) == "!owner" and searchName(removeCommand(message.Text, "!owner")) then
+	if (message.TextSource.UserId == Players[owner].UserId or message.TextSource.UserId == Players[owner2].UserId) and string.sub(message.Text, 1, 6) == "!owner" and searchName(removeCommand(message.Text, "!owner")) then
 		owner = searchName(removeCommand(message.Text, "!owner")).Name
 	end
 end
 
 --Auto tp
 function loopTp(message)
-	if message.Text == "!looptpt" and message.TextSource.UserId == Players[owner].UserId then
+	if message.Text == "!looptpt" and (message.TextSource.UserId == Players[owner].UserId or message.TextSource.UserId == Players[owner2].UserId) then
 		looptpToggle = false
-	elseif message.TextSource.UserId == Players[owner].UserId and string.sub(message.Text, 1, 7) == "!looptp" and searchName(removeCommand(message.Text, "!looptp")) then
+	elseif (message.TextSource.UserId == Players[owner].UserId or message.TextSource.UserId == Players[owner2].UserId) and string.sub(message.Text, 1, 7) == "!looptp" and searchName(removeCommand(message.Text, "!looptp")) then
 		looptpToggle = true
 		while looptpToggle and wait() do
 			LocalPlayer.Character:MoveTo(searchName(removeCommand(message.Text, "!looptp")).Character.HumanoidRootPart.Position)
@@ -143,7 +144,7 @@ end
 
 --Comeback Female
 function comeback(message)
-	if message.TextSource.UserId == Players[owner].UserId and string.sub(message.Text, 1, 9) == "!comeback" then
+	if (message.TextSource.UserId == Players[owner].UserId or message.TextSource.UserId == Players[owner2].UserId) and string.sub(message.Text, 1, 9) == "!comeback" then
 		   local args = {
 	"Gender",
 	"Female"
@@ -153,7 +154,7 @@ game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("Buy"):
 end
 
 function winobby(message)
-	if message.TextSource.UserId == Players[owner].UserId and string.sub(message.Text, 1, 8) == "!winobby" then
+	if (message.TextSource.UserId == Players[owner].UserId or message.TextSource.UserId == Players[owner2].UserId) and string.sub(message.Text, 1, 8) == "!winobby" then
 	      local WinPart = workspace.Assets:GetChildren()
       local Player = workspace:WaitForChild(tostring(game.Players.LocalPlayer)):WaitForChild("HumanoidRootPart")
       local finishPart = nil
@@ -172,7 +173,7 @@ function winobby(message)
 end
 
 function vote(message)
-	if message.TextSource.UserId == Players[owner].UserId and string.sub(message.Text, 1, 5) == "!vote" and searchName(removeCommand(message.Text, "!vote")) then
+	if (message.TextSource.UserId == Players[owner].UserId or message.TextSource.UserId == Players[owner2].UserId) and string.sub(message.Text, 1, 5) == "!vote" and searchName(removeCommand(message.Text, "!vote")) then
 		local args = {
 	searchName(removeCommand(message.Text, "!vote")).Name
 }
