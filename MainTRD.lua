@@ -126,7 +126,7 @@ end
 --Trasnfer ownership
 function ownership(message)
 	if (message.TextSource.UserId == Players[owner].UserId or message.TextSource.UserId == Players[owner2].UserId) and string.sub(message.Text, 1, 6) == "!owner" and searchName(removeCommand(message.Text, "!owner")) then
-		owner = searchName(removeCommand(message.Text, "!owner")).Name
+		owner2 = searchName(removeCommand(message.Text, "!owner")).Name
 	end
 end
 
